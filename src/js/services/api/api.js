@@ -1,8 +1,6 @@
-import axios from "axios"
-
 import { Request, Methods } from "./Request"
+import API from "./axios-helper"
 
-const API = axios.create({ url: "http://localhost:3001/" })
 
 
 /**
