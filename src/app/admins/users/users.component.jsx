@@ -1,12 +1,11 @@
 import React from 'react'
 import { Component } from 'react'
-import { connect } from 'react-redux'
 
 import { Route, Switch } from 'react-router-dom'
 
-import UserCreate from './user-create'
+import UserCreate from './user-create/user-create.container'
 
-class AdminsUsersRoute extends Component{
+export class AdminsUsersRoute extends Component{
     render(){
         return (
             <Switch>
@@ -15,9 +14,3 @@ class AdminsUsersRoute extends Component{
         )
     }
 }
-
-function mapStateToProps( state ){
-    return {};
-}
-
-export default connect(mapStateToProps)(AdminsUsersRoute);

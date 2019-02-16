@@ -1,12 +1,11 @@
 import React from 'react'
 import { Component } from 'react'
-import { connect } from 'react-redux'
 
 import { Route, Switch } from 'react-router-dom'
 
-import UsersRoutes from './users'
+import UsersRoutes from './users/users.container'
 
-class AdminRoutes extends Component{
+export class AdminRoutes extends Component{
 
     render(){
 
@@ -17,9 +16,3 @@ class AdminRoutes extends Component{
         )
     }
 }
-
-function mapStateToProps( state ){
-    return {};
-}
-
-export default connect(mapStateToProps)(AdminRoutes)

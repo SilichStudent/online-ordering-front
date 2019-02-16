@@ -1,8 +1,7 @@
 import React from 'react'
 import { Component } from 'react'
-import { connect } from 'react-redux'
 
-class Login extends Component{
+export class Login extends Component{
 
     constructor(props){
         super(props);
@@ -26,5 +25,3 @@ class Login extends Component{
         )
     }
 }
-
-export default connect(() => {return {}})(Login);

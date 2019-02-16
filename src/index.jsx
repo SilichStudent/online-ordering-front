@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 
 
-import configureStore from './js/store/configureStore'
-import Routes from './js/routes/routes'
+import configureStore from './common/store/configureStore'
+import Routes from './app/app-routes.container'
 
 const store = configureStore();
 
