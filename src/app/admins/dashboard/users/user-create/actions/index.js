@@ -1,7 +1,7 @@
-import { callApi } from '../../../../../common/services/api/api'
-import { RequestBuilder } from '../../../../../common/services/api/RequestBuilder'
+import { callApi } from '../../../../../../common/services/api/api'
+import { RequestBuilder } from '../../../../../../common/services/api/RequestBuilder'
 import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAIL } from '../constants'
-import { Methods } from "../../../../../common/services/api/Request"
+import { Methods } from "../../../../../../common/services/api/Request"
 
 export function createUser(user) {
     return (dispatch) => {
