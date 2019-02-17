@@ -1,4 +1,4 @@
-import { GET_USERS_REQUEST, GET_USERS_SUCCESS, GET_USERS_FAIL } from '../constants'
+import { GET_MANAGERS_REQUEST, GET_MANAGERS_SUCCESS, GET_MANAGERS_FAIL } from '../constants';
 
 const initialState = {
     list: [],
@@ -11,13 +11,13 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case GET_USERS_REQUEST:
+        case GET_MANAGERS_REQUEST:
             return {
                 ...state,
                 error: '',
                 loading: true
             };
-        case GET_USERS_SUCCESS:
+        case GET_MANAGERS_SUCCESS:
             return {
                 ...state,
                 list: action.response.list,
@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
                 count: action.response.count,
                 loading: false
             };
-        case GET_USERS_FAIL:
+        case GET_MANAGERS_FAIL:
             return {
                 ...state,
                 error: action.error,

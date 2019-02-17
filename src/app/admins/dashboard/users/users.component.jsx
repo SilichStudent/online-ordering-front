@@ -2,25 +2,21 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import UserCreate from './user-create/user-create.container';
-import { UserList } from './components/UserList'
+import { UserList } from './components/UserList';
 
 export class AdminsUsersRoute extends Component {
 
     componentDidMount() {
-        this.props.loadUsers()
+        this.props.loadUsers( this.props.limit, this.props.offset);
     }
 
     createUser = () => {
-        this.props.history.push('/admins/dashboard/users/create')
+        this.props.history.push('/admins/dashboard/users/create');
     }
 
     render() {
-
-        console.log("OPOPOPOPOP");
-        
-
         if (this.props.loading) {
-            return (<div>Loading</div>)
+            return (<div>Loading</div>);
         }
 
         return (

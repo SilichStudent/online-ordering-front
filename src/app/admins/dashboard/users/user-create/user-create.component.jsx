@@ -14,10 +14,6 @@ export class UserCreate extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
-
-    }
 
     onSubmit = (e) => {
         e.preventDefault();
