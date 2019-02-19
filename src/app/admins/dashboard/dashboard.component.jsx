@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Nav } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 
 import AdminUsers from './users/users.container';
 import AdminManagers from './managers/managers.container';
@@ -31,12 +31,17 @@ export class Dashboard extends Component {
             // here change to component 
             <div className='dashboard'>
                 <div className='menu-list'>
-                    <Nav  className="flex-column">
-                        <Nav.Link  onClick={this.onUsersSelect}>Users</Nav.Link>
-                        <Nav.Link  onClick={this.onManagersSelect}>Managers</Nav.Link>
-                        <Nav.Link  onClick={this.onProductsSelect}>Products</Nav.Link>
-                        <Nav.Link  onClick={this.onOrderLineSelect}>Order line</Nav.Link>
-                    </Nav>
+                    <Navbar expand='sm'>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id='basic-nav=bar'>
+                            <Nav className='flex-column'>
+                                <Nav.Link  onClick={this.onUsersSelect}>Users</Nav.Link>
+                                <Nav.Link  onClick={this.onManagersSelect}>Managers</Nav.Link>
+                                <Nav.Link  onClick={this.onProductsSelect}>Products</Nav.Link>
+                                <Nav.Link  onClick={this.onOrderLineSelect}>Order line</Nav.Link>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Navbar>
                 </div>
                 <div className='content'>
                     <Switch>

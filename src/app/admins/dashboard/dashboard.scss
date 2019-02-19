@@ -4,14 +4,23 @@
     margin: auto;
     margin-top: 30px;
     display: flex;
+    @media (max-width: 576px){
+        flex-direction: column;
+    }
 }
 
 .menu-list{
     height: 100%;
     width: 20%;
+    @media (max-width: 576px){
+        width: 100%;
+    }
 }
 
 .content{
     height: 100%;
     width: 80%;
+    @media (max-width: 576px){
+        width: 100%;
+    }
 }
