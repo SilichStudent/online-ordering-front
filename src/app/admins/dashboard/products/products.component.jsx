@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Tab, Tabs } from 'react-bootstrap';
 
-export class Products extends Component{
+import { CategoriesTree } from './components/CategoriesTree'
+
+export class Products extends Component {
+    // componentDidMount() {
+    //     this.props.loadCategoriesTree(this.props.limit, this.props.offset);
+    // }
+
     render() {
         return (
-            <Card style={{ width: '18rem', height: '200px' }}>
-                <Card.Body>
-                    <Card.Title>Add product</Card.Title>
-                    <Button variant="primary">+</Button>
-                </Card.Body>
-            </Card>
+            <CategoriesTree categories={this.props.list} />
         )
     }
 }
