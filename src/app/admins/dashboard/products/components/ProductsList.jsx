@@ -12,9 +12,9 @@ export class ProductsList extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{ display: 'flex' , flexWrap:'wrap'}}>
                 {this.getProductsList()}
-                <Card style={{ width: '18rem', height: '200px' }}>
+                <Card style={{ width: '18rem', height: '300px' }}>
                     <Card.Body>
                         <Card.Title>Add product</Card.Title>
                         <Button variant="primary">+</Button>

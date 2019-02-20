@@ -9,7 +9,6 @@ export class CategoriesTree extends Component {
         return this.props.categories.map(category => {
             return (
                 <Tab key={category.id} eventKey={category.id} title={category.name}>
-
                     <ProductsList products={category.products} />
                 </Tab>
             )
@@ -33,6 +32,9 @@ export class CategoriesTree extends Component {
                 id="uncontrolled-tab-example"
             >
                 {this.getCategoriesTree()}
+                <Tab title='+'>
+                    
+                </Tab>
             </Tabs>
         )
     }
