@@ -1,12 +1,12 @@
 import React from 'react'
 import { Component } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Form, Modal } from 'react-bootstrap'
 
 import './create-user.scss'
 
 export class UserCreate extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             email: '',
@@ -22,7 +22,7 @@ export class UserCreate extends Component {
             name: this.state.name
         };
 
-        if(!user.email || !user.name){
+        if (!user.email || !user.name) {
             return;
         }
 
@@ -41,19 +41,24 @@ export class UserCreate extends Component {
 
     render() {
         return (
-            <div className="user-create">
-                <Form onSubmit={this.onSubmit}>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control ref="email" type="email" placeholder="Enter email" onChange={this.handleEmailChange} />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicText">
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control ref="name" type="text" placeholder="Enter name" onChange={this.handleNameChange} />
-                    </Form.Group>
-                    <Button variant="outline-primary" type="submit">Create</Button>
-                </Form>
-            </div>
+            <Modal show={true} onHide={this.handleClose} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Create user</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form onSubmit={this.onSubmit}>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control ref="email" type="email" placeholder="Enter email" onChange={this.handleEmailChange} />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicText">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control ref="name" type="text" placeholder="Enter name" onChange={this.handleNameChange} />
+                        </Form.Group>
+                        <Button variant="outline-primary" type="submit">Create</Button>
+                    </Form>
+                </Modal.Body>
+            </Modal>
         )
     }
 }

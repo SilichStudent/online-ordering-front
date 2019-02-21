@@ -3,16 +3,16 @@ import { Component } from 'react'
 
 import { Route, Switch } from 'react-router-dom'
 
-import AdminDashboard from './dashboard/dashboard.container'
+import UserDashboard from './dashboard/dashboard.container'
 
 
-export class AdminRoutes extends Component{
+export class UserRoutes extends Component{
 
     render(){
 
         return (
             <Switch>
-                <Route path="/admins/dashboard" component={AdminDashboard}/>
+                <Route path="/users/dashboard" component={UserDashboard}/>
             </Switch>
         )
     }

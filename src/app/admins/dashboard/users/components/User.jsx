@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 
-import { Button } from 'react-bootstrap';
+import { Button, InputGroup } from 'react-bootstrap';
 
 export class User extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isBlocked: props.isBlocked
+        }
+    }
+
+    handleCheckbox = () => {
+        this.setState({
+            isBlocked: !this.state.isBlocked
+        })
+    }
+
     render() {
         return (
             <tr>
@@ -13,10 +26,16 @@ export class User extends Component {
                     {this.props.email}
                 </td>
                 <td>
-                    {this.props.createdDate}
+                    {new Date(this.props.createdDate).toLocaleDateString()}
                 </td>
                 <td>
-                    <Button variant="info">Edit</Button>
+                    <input type="checkbox" defaultChecked={this.state.isBlocked} onChange={this.handleCheckbox} />
+                </td>
+                <td>
+                    <input type="number" defaultValue={this.props.balance}/>
+                </td>
+                <td>
+                    <Button variant="info">Save</Button>
                 </td>
                 <td>
                     <Button variant="danger">Delete</Button>

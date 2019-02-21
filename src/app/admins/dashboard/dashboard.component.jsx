@@ -5,6 +5,7 @@ import { Nav, Navbar } from 'react-bootstrap';
 import AdminUsers from './users/users.container';
 import AdminManagers from './managers/managers.container';
 import AdminProducts from './products/products.container'
+import AdminOrderLine from './order-line/order-line.container'
 
 import './dashboard.scss'
 
@@ -48,7 +49,7 @@ export class Dashboard extends Component {
                         <Route path='/admins/dashboard/users' component={AdminUsers} />
                         <Route path='/admins/dashboard/managers' component={AdminManagers} />
                         <Route path='/admins/dashboard/products' component={AdminProducts} />
-                        <Route path='/admins/dashboard/order-line' component={null} />
+                        <Route path='/admins/dashboard/order-line' component={AdminOrderLine} />
                     </Switch>
                 </div>
             </div>
