@@ -16,6 +16,12 @@ export function callApi(request) {
         case Methods.POST:
             responsePromise = axios.post(url, request.body, { headers: request.headers, params: request.params });
             break;
+        case Methods.PUT:
+            responsePromise = axios.put(url, request.body, { headers: request.headers, params: request.params });
+            break;
+        case Methods.DELETE:
+            responsePromise = axios.delete(url, { headers: request.headers, params: request.params });
+            break;
         default:
             responsePromise = Promise.resolve();
             break;

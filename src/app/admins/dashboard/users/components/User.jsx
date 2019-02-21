@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-
-import { Button, InputGroup } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 export class User extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isBlocked: props.isBlocked
+            isBlocked: props.isBlocked,
+            balance: props.balance
         }
     }
 
@@ -14,6 +14,22 @@ export class User extends Component {
         this.setState({
             isBlocked: !this.state.isBlocked
         })
+    }
+
+    handleBalance = (e) => {
+        this.setState({
+            balance: e.target.value
+        })
+    }
+
+    handleSave = (e) => {
+        e.preventDefault();
+        this.props.handleSave(this.props.id, this.state.isBlocked, this.state.balance);
+    }
+
+    handleDelete = (e) => {
+        e.preventDefault();
+        this.props.handleDelete(this.props.id);
     }
 
     render() {
@@ -32,13 +48,13 @@ export class User extends Component {
                     <input type="checkbox" defaultChecked={this.state.isBlocked} onChange={this.handleCheckbox} />
                 </td>
                 <td>
-                    <input type="number" defaultValue={this.props.balance}/>
+                    <input type="number" defaultValue={this.props.balance} onChange={this.handleBalance} />
                 </td>
                 <td>
-                    <Button variant="info">Save</Button>
+                    <Button variant="info" onClick={this.handleSave}>Save</Button>
                 </td>
                 <td>
-                    <Button variant="danger">Delete</Button>
+                    <Button variant="danger" onClick={this.handleDelete}>Delete</Button>
                 </td>
             </tr>
         )

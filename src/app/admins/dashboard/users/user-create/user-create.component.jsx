@@ -27,7 +27,7 @@ export class UserCreate extends Component {
         }
 
         this.props.createUser(user);
-        this.props.history.push('/admins/dashboard/users')
+        this.props.history.push('/admins/dashboard/users');
 
     }
 

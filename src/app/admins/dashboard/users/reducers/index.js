@@ -1,4 +1,6 @@
 import { GET_USERS_REQUEST, GET_USERS_SUCCESS, GET_USERS_FAIL } from '../constants'
+import { PUT_USERS_REQUEST, PUT_USERS_SUCCESS, PUT_USERS_FAIL } from '../constants'
+import { DELETE_USERS_REQUEST, DELETE_USERS_SUCCESS, DELETE_USERS_FAIL } from '../constants'
 
 const initialState = {
     list: [],
@@ -27,6 +29,40 @@ export default (state = initialState, action) => {
                 loading: false
             };
         case GET_USERS_FAIL:
+            return {
+                ...state,
+                error: action.error,
+                loading: false
+            };
+        case PUT_USERS_REQUEST:
+            return {
+                ...state,
+                error: '',
+                loading: true
+            };
+        case PUT_USERS_SUCCESS:
+            return {
+                ...state,
+                loading: false
+            };
+        case PUT_USERS_FAIL:
+            return {
+                ...state,
+                error: action.error,
+                loading: false
+            };
+        case DELETE_USERS_REQUEST:
+            return {
+                ...state,
+                error: '',
+                loading: true
+            };
+        case DELETE_USERS_SUCCESS:
+            return {
+                ...state,
+                loading: false
+            };
+        case DELETE_USERS_FAIL:
             return {
                 ...state,
                 error: action.error,

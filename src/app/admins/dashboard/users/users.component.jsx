@@ -14,6 +14,18 @@ export class AdminsUsersRoute extends Component {
         this.props.history.push('/admins/dashboard/users/create');
     }
 
+    handleSave = (id, isBlocked, balance) => {
+        this.props.updateUser(id, isBlocked, balance);
+        this.props.history.push('/admins/dashboard/users');
+    }
+
+    handleDelete = (id) => {
+        this.props.deleteUser(id);
+        this.props.history.push('/admins/dashboard/users');
+    }
+
+
+
     render() {
         if (this.props.loading) {
             return (<div>Loading</div>);
@@ -22,7 +34,7 @@ export class AdminsUsersRoute extends Component {
         return (
             <div>
                 <Button variant="outline-success" onClick={this.createUser}>+ New</Button>
-                <UserList users={this.props.list} />
+                <UserList users={this.props.list} handleSave={this.handleSave} handleDelete={this.handleDelete}/>
                 <Switch>
                     <Route path="/admins/dashboard/users/create" component={UserCreate} />
                 </Switch>
