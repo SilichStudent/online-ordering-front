@@ -39,6 +39,10 @@ export class UserCreate extends Component {
         this.setState({ name: e.target.value });
     }
 
+    handleClose = (e) => {
+        this.props.history.push('/admins/dashboard/users');
+    }
+
     render() {
         return (
             <Modal show={true} onHide={this.handleClose} centered>

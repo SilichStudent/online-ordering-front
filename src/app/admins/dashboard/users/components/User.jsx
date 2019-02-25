@@ -48,7 +48,7 @@ export class User extends Component {
                     <input type="checkbox" defaultChecked={this.state.isBlocked} onChange={this.handleCheckbox} />
                 </td>
                 <td>
-                    <input type="number" defaultValue={this.props.balance} onChange={this.handleBalance} />
+                    <input type="number" name="price" defaultValue={this.props.balance || 0} onChange={this.handleBalance} step=".1" />
                 </td>
                 <td>
                     <Button variant="info" onClick={this.handleSave}>Save</Button>

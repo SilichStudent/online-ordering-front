@@ -7,7 +7,7 @@ export class UserList extends Component {
     render() {
         return (
             <div className='users-table'>
-                <Table striped bordered hover>
+                <Table striped bordered hover responsive>
                     <thead>
                         <tr>
                             <th>Name</th>

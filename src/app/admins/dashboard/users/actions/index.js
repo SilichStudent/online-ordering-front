@@ -40,7 +40,7 @@ export const updateUser = (id, isBlocked, balance) => {
     const request = new RequestBuilder()
       .addEndpoint(`/users/${id}`)
       .addMethod(Methods.PUT)
-      .addBody({ isBlocked, balance: parseInt(balance) })
+      .addBody({ isBlocked, balance: parseFloat(balance).toFixed(2) })
       .addHeaders({ "Auth-Token": "asdasd" })
       .build();
 
