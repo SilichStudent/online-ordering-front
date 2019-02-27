@@ -9,8 +9,8 @@ export class OrderLine extends Component {
                 <Card key={product.id}>
                     <Card.Img variant="top" src={product.image} style={{ height: '120px', width: '100%' }} />
                     <Card.Body>
-                        <Card.Title></Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
+                        <Card.Title>{product.name}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">{product.description}</Card.Subtitle>
                     </Card.Body>
                 </Card>
             )
@@ -48,12 +48,7 @@ export class OrderLine extends Component {
                     <div className='online-order-items' style={{ width: '60%', height: '100%' }}>
                         {/* here need to do tab with categories and products*/}
                         <Tabs id="uncontrolled-tab-example">
-                            <Tab eventKey="home1" title="lera">
-                                <div> piska 1 </div>
-                            </Tab>
-                            <Tab eventKey="home2" title="sergey">
-                                <div> piska 2 </div>
-                            </Tab>
+                            {this.getCategoriesTabs()}
                         </Tabs>
                     </div>
                 </Card.Body>

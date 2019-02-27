@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap';
 
+import Profile from './components/profile/profile.container'
 
 import './dashboard.scss'
 
 export class Dashboard extends Component {
 
     onEditSelect = () =>{
-        this.props.history.push('/users/dashboard/edit')
+        this.props.history.push('/users/dashboard/profile')
     }
 
     onHistorySelect = () =>{
@@ -43,7 +44,7 @@ export class Dashboard extends Component {
                 </div>
                 <div className='content'>
                     <Switch>
-                        <Route path='/users/dashboard/edit' component={null} />
+                        <Route path='/users/dashboard/profile' component={Profile} />
                         <Route path='/users/dashboard/products' component={null} />
                         <Route path='/users/dashboard/card' component={null} />
                         <Route path='/users/dashboard/history' component={null} />

@@ -6,3 +6,24 @@
     margin-bottom: 5px;
     border-width: 1px;
 }
+
+.nav{
+    display: -webkit-box;
+    overflow-x: auto;
+}
+
+.order-line-products-wrapper{
+    height: 300px;
+    display: flex;
+    border: 1px solid transparent;
+    border-color: #dee2e6
+}
+
+.card-header-tabs {
+    margin-left: 0;
+    margin-bottom: 0;
+}
+
+.card{
+    height: 97%;
+}

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 
 import { OrderLine as OrderLineSingle } from './component/OrderLine'
 
 import './order-line.scss'
 
-export class OrderLine extends Component{
+export class OrderLine extends Component {
 
 
     componentDidMount() {
@@ -12,9 +13,9 @@ export class OrderLine extends Component{
     }
 
     orderLinesList = () => {
-        return this.props.list.map( orderLine => {
-            return (<OrderLineSingle 
-                key={orderLine.id} 
+        return this.props.list.map(orderLine => {
+            return (<OrderLineSingle
+                key={orderLine.id}
                 id={orderLine.id}
                 name={orderLine.name}
                 description={orderLine.description}
@@ -28,10 +29,15 @@ export class OrderLine extends Component{
         })
     }
 
-    render(){
+    render() {
         return (
             <div>
-                {this.orderLinesList()}
+                <div className="order-line-menu">
+                    <Button variant="success">+ Create</Button>
+                </div>
+                <div>
+                    {this.orderLinesList()}
+                </div>
             </div>
         )
     }
