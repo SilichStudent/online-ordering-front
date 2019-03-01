@@ -1,10 +1,34 @@
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 
-import { OrderLineCreate } from './create-order-line.component'
-import { createOrderLine } from './actions'
+import { OrderLineCreate } from "./create-order-line.component";
+import { createOrderLine } from "./actions";
+import { loadCategoriesTree } from "../../../products/actions";
 
-function mapStateToProps(state) {
-    return {};
+function splitToCategoriesAndProducts(categoriesTree) {
+  const categories = [];
+  const products = [];
+
+  categoriesTree.list.forEach(category => {
+    if (category.name !== "default") {
+      categories.push({ id: category.id, name: category.name });
+    }
+    if (categories.products instanceof Array) {
+      categories.products.forEach(product => {
+        products.push({ id: product.id, name: product.name });
+      });
+    }
+  });
+
+  return { categories, products };
 }
 
-export default connect(mapStateToProps, { createOrderLine })(OrderLineCreate)
+function mapStateToProps(state) {
+  const { categoriesTree } = state;
+  const { categories, products } = splitToCategoriesAndProducts(categoriesTree);
+  return { categoriesTree, categories, products };
+}
+
+export default connect(
+  mapStateToProps,
+  { createOrderLine, loadCategoriesTree }
+)(OrderLineCreate);
