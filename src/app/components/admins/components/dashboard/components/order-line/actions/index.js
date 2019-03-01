@@ -10,7 +10,6 @@ export const loadOrderLines = (limit, offset) => {
             .addEndpoint("/order-lines")
             .addMethod(Methods.GET)
             .addParams({ limit, offset })
-            .addHeaders({ "Auth-Token": "asdasd" })
             .build();
 
         dispatch({ type: GET_ORDER_LINES_REQUEST });

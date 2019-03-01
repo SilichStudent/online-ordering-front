@@ -1,4 +1,5 @@
 import { GET_ORDER_LINES_REQUEST, GET_ORDER_LINES_SUCCESS, GET_ORDER_LINES_FAIL } from '../constants'
+import { CREATE_ORDER_LINE_REQUEST, CREATE_ORDER_LINE_SUCCESS, CREATE_ORDER_LINE_FAIL } from '../component/create-order-line.component/constants'
 
 const initialState = {
     list: [],
@@ -11,6 +12,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case CREATE_ORDER_LINE_REQUEST:
         case GET_ORDER_LINES_REQUEST:
             return {
                 ...state,
@@ -20,12 +22,18 @@ export default (state = initialState, action) => {
         case GET_ORDER_LINES_SUCCESS:
             return {
                 ...state,
-                list: action.response.list,
-                limit: action.response.limit,
-                offset: action.response.offset,
-                count: action.response.count,
+                ...action.response,
                 loading: false
             };
+        case CREATE_ORDER_LINE_SUCCESS:
+            const orderLinesCreate = state.list.split();
+            orderLinesCreate.push(action.response);
+            return {
+                ...state,
+                list: orderLinesCreate,
+                loading: false
+            };
+        case CREATE_ORDER_LINE_FAIL:
         case GET_ORDER_LINES_FAIL:
             return {
                 ...state,

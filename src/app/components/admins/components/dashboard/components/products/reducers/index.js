@@ -41,6 +41,13 @@ export default (state = initialState, action) => {
                 list: listCreate,
                 loading: false
             };
+        case DELETE_CATEGORY_SUCCESS:
+            const listDelete = state.list.filter( category => category.id !== action.response.id);
+            return {
+                ...state,
+                list: listDelete,
+                loading: false
+            };
         case GET_CATEGORIES_TREE_FAIL:
         case DELETE_CATEGORY_FAIL:
         case CREATE_CATEGORY_FAIL:

@@ -30,6 +30,14 @@ export class OrderLine extends Component {
             )
         });
 
+        tabs.push((
+            <Tab eventKey="No category" title="Products">
+                    <div className="order-line-products-wrapper">
+                        {this.getProducts(this.props.products)}
+                    </div>
+                </Tab>
+        ))
+
         return tabs;
     }
 
