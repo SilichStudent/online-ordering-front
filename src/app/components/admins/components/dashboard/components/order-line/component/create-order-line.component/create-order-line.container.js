@@ -12,11 +12,9 @@ function splitToCategoriesAndProducts(categoriesTree) {
     if (category.name !== "default") {
       categories.push({ id: category.id, name: category.name });
     }
-    if (categories.products instanceof Array) {
-      categories.products.forEach(product => {
+      Object.values(category.products).forEach(product => {
         products.push({ id: product.id, name: product.name });
       });
-    }
   });
 
   return { categories, products };

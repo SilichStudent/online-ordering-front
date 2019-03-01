@@ -7,7 +7,7 @@ export function createOrderLine(manager) {
     return (dispatch) => {
 
         const request = new RequestBuilder()
-            .addEndpoint('/managers')
+            .addEndpoint('/order-lines')
             .addMethod(Methods.POST)
             .addBody(manager)
             .build();

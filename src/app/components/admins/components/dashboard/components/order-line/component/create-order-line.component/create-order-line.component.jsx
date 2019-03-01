@@ -16,7 +16,7 @@ export class OrderLineCreate extends Component {
       endTime: moment(),
       isActive: false,
       categories: [],
-      products: []
+      products: [],
     };
   }
 
@@ -36,10 +36,8 @@ export class OrderLineCreate extends Component {
       products: this.state.products
     };
 
-    console.log(orderLine);
-
-    // this.props.createOrderLine(manager);
-    // this.props.history.push("/admins/dashboard/order-line");
+    this.props.createOrderLine(orderLine);
+    this.props.history.push("/admins/dashboard/order-line");
   };
 
   handleNameChange = e => {
@@ -62,18 +60,33 @@ export class OrderLineCreate extends Component {
   };
 
   handleCategoriesChange = e => {
-    this.setState({ email: e.target.value });
+    const category = this.props.categories.filter( cat => cat.id === e.target.value)[0];
+    this.state.categories.push(category)
+    this.setState({ categories: this.state.categories });
   };
 
   handleProductsChange = e => {
-    this.setState({ email: e.target.value });
+    const product = this.props.products.filter( prod => prod.id === e.target.value)[0];
+    this.state.products.push(product)
+    this.setState({ products: this.state.products });
   };
+
+  handleRemoveCategory = e => {
+    const categories = this.state.categories.filter(cat => cat.id !== e.target.value);
+    this.setState({ categories });
+  }
+
+  handleRemoveProduct = e => {
+    const products = this.state.products.filter(prod => prod.id!== e.target.value);
+    this.setState({ products });
+  }
 
   handleClose = e => {
     this.props.history.push("/admins/dashboard/order-line");
   };
 
   render() {
+
     return (
       <Modal show={true} onHide={this.handleClose} centered>
         <Modal.Header closeButton>
@@ -116,9 +129,33 @@ export class OrderLineCreate extends Component {
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlSelect2">
               <Form.Label>Select categories</Form.Label>
-              <Form.Control as="select" multiple>
-                {this.props.categories.map(category => (
-                  <option>{category.name}</option>
+              <Form.Control as="select" onClick={this.handleCategoriesChange} multiple >
+                {this.props.categories.filter(cat => !this.state.categories.some(c => c.id === cat.id)).map(category => (
+                  <option key={category.id}  value={category.id}>{category.name}</option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlSelect2">
+              <Form.Label>Select products</Form.Label>
+              <Form.Control as="select" onClick={this.handleProductsChange} multiple>
+                {this.props.products.filter(prod => !this.state.products.some(p => p.id === prod.id)).map(product => (
+                  <option key={product.id} value={product.id}>{product.name}</option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlSelect2">
+              <Form.Label>Selected categories</Form.Label>
+              <Form.Control as="select" onClick={this.handleRemoveCategory} multiple>
+                {this.state.categories.map(category => (
+                  <option key={category.id} value={category.id}>{category.name}</option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlSelect2">
+              <Form.Label>Selected products</Form.Label>
+              <Form.Control as="select" onClick={this.handleRemoveProduct} multiple>
+                {this.state.products.map(product => (
+                  <option key={product.id} value={product.id}>{product.name}</option>
                 ))}
               </Form.Control>
             </Form.Group>
