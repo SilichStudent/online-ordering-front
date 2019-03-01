@@ -1,19 +1,19 @@
 import { combineReducers } from 'redux';
 
-import loginReducer from '../../app/login/login.reducer';
-import usersReducer from '../../app/admins/dashboard/users/reducers';
-import createUserReducer from '../../app/admins/dashboard/users/user-create/reducers';
-import managersReducer from '../../app/admins/dashboard/managers/reducers';
-import categoriesReducer from '../../app/admins/dashboard/products/reducers';
-import orderLinesReducer from '../../app/admins/dashboard/order-line/reducers';
+import usersReducer from '../../app/components/admins/components/dashboard/components/users/reducers';
+import managersReducer from '../../app/components/admins/components/dashboard/components/managers/reducers';
+import categoriesReducer from '../../app/components/admins/components/dashboard/components/products/reducers';
+import orderLinesReducer from '../../app/components/admins/components/dashboard/components/order-line/reducers';
+import currentUserReducer from '../../app/components/users/components/login/reducers';
+import currentManagerReducer from '../../app/components/admins/components/login/reducers';
 
 const rootReducer = combineReducers({
-    login: loginReducer,
-    createUser: createUserReducer,
     users: usersReducer,
     managers: managersReducer,
     categoriesTree: categoriesReducer,
-    orderLines: orderLinesReducer
+    orderLines: orderLinesReducer,
+    currentUser: currentUserReducer,
+    currentManager: currentManagerReducer
 });
 
 export default rootReducer;

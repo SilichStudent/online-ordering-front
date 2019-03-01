@@ -1,9 +1,9 @@
 export class Request {
-    method;
-    endpoint;
-    params;
-    headers;
-    body;
+    method = "GET";
+    endpoint = {};
+    params = {};
+    headers = {};
+    body = {};
 }
 
 export const Methods = {

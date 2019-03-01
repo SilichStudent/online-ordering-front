@@ -1,5 +1,8 @@
-import { Request, Methods } from "./Request"
-import axios from "axios"
+import axios from "axios";
+
+import { Request, Methods } from "./Request";
+import * as tokenService from '../token.service';
+import { AUTH_TOKEN } from '../../constants';
 
 /**
  * 
@@ -8,6 +11,16 @@ import axios from "axios"
 export function callApi(request) {
     let responsePromise;
     const url = "http://localhost:3001/api/v1" + request.endpoint;
+
+    if(!request.headers){
+        request.headers = {}
+    }
+
+    const token = tokenService.getUserToken() || tokenService.getManagerToken();
+    if(token){
+        request.headers[AUTH_TOKEN] = token;
+    }
+
     request.headers['Access-Control-Allow-Origin'] = '*';
     switch (request.method) {
         case Methods.GET:
