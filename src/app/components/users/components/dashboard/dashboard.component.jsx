@@ -12,7 +12,7 @@ export class Dashboard extends Component {
 
     
     isHavePermissions(){
-        return tokenService.getUserToken() && this.props.currentUser && this.props.currentUser.id;
+        return tokenService.getUserToken() && this.props.currentUser && this.props.currentUser.uuid;
     }
 
     onEditSelect = () =>{

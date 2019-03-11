@@ -4,7 +4,7 @@ import { Nav, Navbar } from 'react-bootstrap';
 
 import AdminUsers from './components/users/users.container';
 import AdminManagers from './components/managers/managers.container';
-import AdminProducts from './components/products/products.container'
+import AdminCategories from './components/categories/categories.container'
 import AdminOrderLine from './components/order-line/order-line.container'
 
 import * as tokenService from '../../../../../common/services/token.service';
@@ -14,24 +14,24 @@ import './dashboard.scss'
 export class Dashboard extends Component {
 
     isHavePermissions(){
-        return tokenService.getManagerToken() && this.props.currentManager && this.props.currentManager.id;
+        return tokenService.getManagerToken() && this.props.currentManager && this.props.currentManager.uuid;
     }
 
 
     onUsersSelect = () =>{
-        this.props.history.push('/admins/dashboard/users')
+        this.props.history.push('/admins/dashboard/users');
     }
 
     onManagersSelect = () =>{
-        this.props.history.push('/admins/dashboard/managers')
+        this.props.history.push('/admins/dashboard/managers');
     }
 
     onProductsSelect = () =>{
-        this.props.history.push('/admins/dashboard/products')
+        this.props.history.push('/admins/dashboard/categories');
     }
 
     onOrderLineSelect = () =>{
-        this.props.history.push('/admins/dashboard/order-line')
+        this.props.history.push('/admins/dashboard/order-line');
     }
 
     render() {
@@ -60,7 +60,7 @@ export class Dashboard extends Component {
                     <Switch>
                         <Route path='/admins/dashboard/users' component={AdminUsers} />
                         <Route path='/admins/dashboard/managers' component={AdminManagers} />
-                        <Route path='/admins/dashboard/products' component={AdminProducts} />
+                        <Route path='/admins/dashboard/categories' component={AdminCategories} />
                         <Route path='/admins/dashboard/order-line' component={AdminOrderLine} />
                     </Switch>
                 </div>

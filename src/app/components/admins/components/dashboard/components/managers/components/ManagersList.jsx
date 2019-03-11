@@ -17,7 +17,7 @@ export class ManagersList extends Component {
                     </thead>
                     <tbody>
                         {this.props.users.map(user => {
-                            return (<Manager key={user.id} id={user.id} email={user.email} createdDate={user.createdDate} handleDelete={this.props.handleDelete}/>)
+                            return (<Manager key={user.uuid} uuid={user.uuid} email={user.email} createdDate={user.createdDate} handleDelete={this.props.handleDelete}/>)
                         })}
                     </tbody>
                 </Table>

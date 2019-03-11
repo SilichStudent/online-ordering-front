@@ -17,8 +17,8 @@ export class OrderLine extends Component {
     orderLinesList = () => {
         return this.props.list.map(orderLine => {
             return (<OrderLineSingle
-                key={orderLine.id}
-                id={orderLine.id}
+                key={orderLine.uuid}
+                uuid={orderLine.uuid}
                 name={orderLine.name}
                 description={orderLine.description}
                 startTime={orderLine.startTime}
@@ -38,7 +38,7 @@ export class OrderLine extends Component {
 
     render() {
         return (
-            <div>
+            <div className="order-line-container">
                 <div className="order-line-menu">
                     <Button variant="success" onClick={this.onCreateSubmit}>+ Create</Button>
                 </div>

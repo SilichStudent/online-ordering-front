@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
                 offset: action.response.offset,
                 count: action.response.count,
                 loading: false,
-                categoryKey: action.response.list && action.response.list.length > 0 && action.response.list[0].id 
+                categoryKey: action.response.list && action.response.list.length > 0 && action.response.list[0].uuid 
             };
         case CREATE_CATEGORY_SUCCESS:
             const listCreate = state.list.slice();
@@ -42,7 +42,7 @@ export default (state = initialState, action) => {
                 loading: false
             };
         case DELETE_CATEGORY_SUCCESS:
-            const listDelete = state.list.filter( category => category.id !== action.response.id);
+            const listDelete = state.list.filter( category => category.uuid !== action.response.uuid);
             return {
                 ...state,
                 list: listDelete,

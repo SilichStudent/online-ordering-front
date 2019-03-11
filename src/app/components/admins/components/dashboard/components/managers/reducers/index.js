@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
                 loading: false
             };
         case DELETE_MANAGER_SUCCESS:
-            const listDelete = state.list.filter(manager => manager.id !== action.response.id);
+            const listDelete = state.list.filter(manager => manager.uuid !== action.response.uuid);
             return {
                 ...state,
                 list: listDelete,

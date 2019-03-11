@@ -6,12 +6,11 @@ import { DELETE_CATEGORY_REQUEST, DELETE_CATEGORY_SUCCESS, DELETE_CATEGORY_FAIL 
 import { DELETE_PRODUCT_REQUEST, DELETE_PRODUCT_SUCCESS, DELETE_PRODUCT_FAIL } from '../constants';
 import { SELECT_CATEGORY } from '../constants';
 
-export const loadCategoriesTree = (limit, offset) => {
+export const loadCategories = () => {
     return (dispatch) => {
         const request = new RequestBuilder()
             .addEndpoint('/categories')
             .addMethod(Methods.GET)
-            .addParams({ limit, offset })
             .build();
 
         
@@ -58,11 +57,5 @@ export const deleteProduct = (id) => {
         }).catch( err => {
             dispatch({ type: DELETE_CATEGORY_FAIL, error: err })
         })
-    }
-}
-
-export const selectCategoryTab = (key) => {
-    return (dispatch) => {
-        dispatch({ type: SELECT_CATEGORY, categoryKey: key});
     }
 }

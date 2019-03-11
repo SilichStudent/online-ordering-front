@@ -30,6 +30,7 @@ export class CategoryCreate extends Component {
         this.setState({ name: e.target.value });
     }
 
+    
 
     render() {
         return (

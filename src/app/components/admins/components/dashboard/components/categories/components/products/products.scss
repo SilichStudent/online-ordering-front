@@ -1,0 +1,23 @@
+.content-grid{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    .add-product-image{
+        width: 100%;
+        margin-top: 24px;
+    }
+    
+    .card{    
+        margin: 5px;
+        height: 100%;
+    }
+    .card-wrapper{
+        height: 300px;
+        width: 100%;
+    }
+    .card-button{
+        width: 48%;
+        height: 40px;
+    }
+}

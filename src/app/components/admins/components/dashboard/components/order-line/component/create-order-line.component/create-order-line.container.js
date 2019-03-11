@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 
 import { OrderLineCreate } from "./create-order-line.component";
 import { createOrderLine } from "./actions";
-import { loadCategoriesTree } from "../../../products/actions";
+// import { loadCategoriesTree } from "../../../products/actions";
 
 function splitToCategoriesAndProducts(categoriesTree) {
   const categories = [];
@@ -10,10 +10,10 @@ function splitToCategoriesAndProducts(categoriesTree) {
 
   categoriesTree.list.forEach(category => {
     if (category.name !== "default") {
-      categories.push({ id: category.id, name: category.name });
+      categories.push({ uuid: category.uuid, name: category.name });
     }
       Object.values(category.products).forEach(product => {
-        products.push({ id: product.id, name: product.name });
+        products.push({ uuid: product.uuid, name: product.name });
       });
   });
 
@@ -28,5 +28,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { createOrderLine, loadCategoriesTree }
+  { createOrderLine/*, loadCategoriesTree*/ }
 )(OrderLineCreate);

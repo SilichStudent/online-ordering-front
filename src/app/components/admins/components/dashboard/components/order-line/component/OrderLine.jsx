@@ -6,7 +6,7 @@ export class OrderLine extends Component {
     getProducts = (products) => {
         return products.map(product => {
             return (
-                <Card key={product.id}>
+                <Card key={product.uuid}>
                     <Card.Img variant="top" src={product.image} style={{ height: '120px', width: '100%' }} />
                     <Card.Body>
                         <Card.Title>{product.name}</Card.Title>
@@ -22,7 +22,7 @@ export class OrderLine extends Component {
 
         this.props.categories.forEach(category => {
             tabs.push(
-                <Tab eventKey={category.id} title={category.name}>
+                <Tab eventKey={category.uuid} title={category.name}>
                     <div className="order-line-products-wrapper">
                         {this.getProducts(category.products)}
                     </div>

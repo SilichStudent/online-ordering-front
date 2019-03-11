@@ -24,8 +24,8 @@ export class UserList extends Component {
                     <tbody>
                         {this.props.users.map(user => {
                             return (<User
-                                key={user.id}
-                                id={user.id}
+                                key={user.uuid}
+                                uuid={user.uuid}
                                 name={user.name}
                                 email={user.email}
                                 createdDate={user.createdDate}

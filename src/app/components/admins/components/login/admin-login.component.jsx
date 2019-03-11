@@ -45,13 +45,13 @@ export class AdminLogin extends Component {
     this.props.authManager(user);
   };
 
-  isUserSignedIn() {
-    return tokenService.getManagerToken() && this.props.currentManager && this.props.currentManager.id;
+  isManagerSignedIn() {
+    return tokenService.getManagerToken() && this.props.currentManager && this.props.currentManager.uuid;
   }
 
   render() {
 
-    if (this.isUserSignedIn()) {
+    if (this.isManagerSignedIn()) {
       return <Redirect to="/admins/dashboard" />
     }
 

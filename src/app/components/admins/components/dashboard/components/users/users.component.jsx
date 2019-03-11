@@ -17,13 +17,13 @@ export class AdminsUsersRoute extends Component {
         this.props.history.push('/admins/dashboard/users/create');
     }
 
-    handleSave = (id, isBlocked, balance) => {
-        this.props.updateUser(id, isBlocked, balance);
+    handleSave = (uuid, isBlocked, balance) => {
+        this.props.updateUser(uuid, isBlocked, balance);
         this.props.history.push('/admins/dashboard/users');
     }
 
-    handleDelete = (id) => {
-        this.props.deleteUser(id);
+    handleDelete = (uuid) => {
+        this.props.deleteUser(uuid);
         this.props.history.push('/admins/dashboard/users');
     }
 

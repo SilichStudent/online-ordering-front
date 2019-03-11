@@ -46,7 +46,7 @@ export class UserLogin extends Component {
   };
 
   isUserSignedIn() {
-    return tokenService.getUserToken() && this.props.currentUser && this.props.currentUser.id;
+    return tokenService.getUserToken() && this.props.currentUser && this.props.currentUser.uuid;
   }
 
   render() {

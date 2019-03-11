@@ -4,13 +4,14 @@ import { Card, Button } from 'react-bootstrap';
 export class ProductCard extends Component {
 
     handelDelete = () => {
-        this.props.handleDeleteProduct(this.props.id);
+        this.props.handleDeleteProduct(this.props.uuid);
     }
 
     render() {
         return (
             <div className='card-wrapper'>
                 <Card>
+                    <div></div>
                     <Card.Img variant="top" src={this.props.image} style={{ height: '120px', width: '100%' }} />
                     <Card.Body>
                         <Card.Title>{this.props.name}</Card.Title>

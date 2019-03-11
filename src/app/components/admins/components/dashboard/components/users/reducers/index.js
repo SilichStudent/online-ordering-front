@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
         case PUT_USERS_SUCCESS:
             const updatedUser = action.response;
             const listPut = state.list.map(user => {
-                if (user.id === updatedUser.id) {
+                if (user.uuid === updatedUser.uuid) {
                     return updatedUser;
                 }
                 return user;
@@ -46,7 +46,7 @@ export default (state = initialState, action) => {
                 loading: false
             };
         case DELETE_USERS_SUCCESS:
-            const listDelete = state.list.filter(user => user.id !== action.response.id);
+            const listDelete = state.list.filter(user => user.uuid !== action.response.uuid);
             return {
                 ...state,
                 list: listDelete,

@@ -60,24 +60,24 @@ export class OrderLineCreate extends Component {
   };
 
   handleCategoriesChange = e => {
-    const category = this.props.categories.filter( cat => cat.id === e.target.value)[0];
+    const category = this.props.categories.filter( cat => cat.uuid === e.target.value)[0];
     this.state.categories.push(category)
     this.setState({ categories: this.state.categories });
   };
 
   handleProductsChange = e => {
-    const product = this.props.products.filter( prod => prod.id === e.target.value)[0];
+    const product = this.props.products.filter( prod => prod.uuid === e.target.value)[0];
     this.state.products.push(product)
     this.setState({ products: this.state.products });
   };
 
   handleRemoveCategory = e => {
-    const categories = this.state.categories.filter(cat => cat.id !== e.target.value);
+    const categories = this.state.categories.filter(cat => cat.uuid !== e.target.value);
     this.setState({ categories });
   }
 
   handleRemoveProduct = e => {
-    const products = this.state.products.filter(prod => prod.id!== e.target.value);
+    const products = this.state.products.filter(prod => prod.uuid!== e.target.value);
     this.setState({ products });
   }
 
@@ -130,16 +130,16 @@ export class OrderLineCreate extends Component {
             <Form.Group controlId="exampleForm.ControlSelect2">
               <Form.Label>Select categories</Form.Label>
               <Form.Control as="select" onClick={this.handleCategoriesChange} multiple >
-                {this.props.categories.filter(cat => !this.state.categories.some(c => c.id === cat.id)).map(category => (
-                  <option key={category.id}  value={category.id}>{category.name}</option>
+                {this.props.categories.filter(cat => !this.state.categories.some(c => c.uuid === cat.uuid)).map(category => (
+                  <option key={category.uuid}  value={category.uuid}>{category.name}</option>
                 ))}
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlSelect2">
               <Form.Label>Select products</Form.Label>
               <Form.Control as="select" onClick={this.handleProductsChange} multiple>
-                {this.props.products.filter(prod => !this.state.products.some(p => p.id === prod.id)).map(product => (
-                  <option key={product.id} value={product.id}>{product.name}</option>
+                {this.props.products.filter(prod => !this.state.products.some(p => p.uuid === prod.uuid)).map(product => (
+                  <option key={product.uuid} value={product.uuid}>{product.name}</option>
                 ))}
               </Form.Control>
             </Form.Group>
@@ -147,7 +147,7 @@ export class OrderLineCreate extends Component {
               <Form.Label>Selected categories</Form.Label>
               <Form.Control as="select" onClick={this.handleRemoveCategory} multiple>
                 {this.state.categories.map(category => (
-                  <option key={category.id} value={category.id}>{category.name}</option>
+                  <option key={category.uuid} value={category.uuid}>{category.name}</option>
                 ))}
               </Form.Control>
             </Form.Group>
@@ -155,7 +155,7 @@ export class OrderLineCreate extends Component {
               <Form.Label>Selected products</Form.Label>
               <Form.Control as="select" onClick={this.handleRemoveProduct} multiple>
                 {this.state.products.map(product => (
-                  <option key={product.id} value={product.id}>{product.name}</option>
+                  <option key={product.uuid} value={product.uuid}>{product.name}</option>
                 ))}
               </Form.Control>
             </Form.Group>

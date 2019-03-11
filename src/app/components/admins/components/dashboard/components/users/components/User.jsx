@@ -24,12 +24,12 @@ export class User extends Component {
 
     handleSave = (e) => {
         e.preventDefault();
-        this.props.handleSave(this.props.id, this.state.isBlocked, this.state.balance);
+        this.props.handleSave(this.props.uuid, this.state.isBlocked, this.state.balance);
     }
 
     handleDelete = (e) => {
         e.preventDefault();
-        this.props.handleDelete(this.props.id);
+        this.props.handleDelete(this.props.uuid);
     }
 
     render() {
