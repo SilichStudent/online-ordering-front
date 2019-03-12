@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Image, Nav } from 'react-bootstrap';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 
 import Products from './components/products/products.container';
+import CreateCategory from './components/create-category/create-category.container';
 import RenameCategory from './components/rename-category/rename-category.container';
 import deleteIcon from '../../../../../../../common/static/delete.png'
 
@@ -16,9 +17,10 @@ export class Categories extends Component {
     getCategories = () => {
         return this.props.list.map(category => {
             return (
-                <Nav.Item key={category.id}>
-                    <Nav.Link href={`/admins/dashboard/categories/${category.id}/products`}  onClick={this.handleCategoryTabClick(category.id)}>{category.name}</Nav.Link>
-                    <Image className="delete-icon" src={deleteIcon} rounded/>
+                <Nav.Item key={category.uuid}>
+                    <Link to={`/admins/dashboard/categories/${category.uuid}/products`}>{category.name}</Link>
+                    {/* <Nav.Link onClick={() => this.handleCategoryTabClick(category.uuid)}>{category.name}</Nav.Link> */}
+                    {/* <Image className="delete-icon" src={deleteIcon} rounded/> */}
                 </Nav.Item>
             )
         })
@@ -51,15 +53,19 @@ export class Categories extends Component {
         }
 
         return (
-            <div classNam="categories-content">
+            <div className="categories-content">
                 <Nav variant="tabs">
-                    {this.getCategories()}
                     <Nav.Item className="category-nav-item">
-                        <Nav.Link onClick={() => this.handleCategoryTabClick('default')}>default</Nav.Link>
-                        <Image className="delete-category-icon" src={deleteIcon} rounded/>
+                        <Nav.Link onClick={() => this.handleCategoryCreate()}>+</Nav.Link>
                     </Nav.Item>
+                    <Nav.Item className="category-nav-item">
+                        <Link to="/admins/dashboard/categories/default/products">default</Link>
+                        {/* <Nav.Link href="/admins/dashboard/categories/default/products">default</Nav.Link> */}
+                    </Nav.Item>
+                    {this.getCategories()}
                 </Nav>
                 <Switch>
+                    <Route path="/admins/dashboard/categories/create" component={CreateCategory} />
                     <Route path="/admins/dashboard/categories/rename" component={RenameCategory} />
                     <Route path="/admins/dashboard/categories/:id/products" component={Products} />
                 </Switch>

@@ -21,6 +21,7 @@ export class Products extends Component{
         this.props.loadProducts(this.state.categoryUuid);
     }
 
+
     getProductsList = () => {
         if(!this.props.products){
             return null
