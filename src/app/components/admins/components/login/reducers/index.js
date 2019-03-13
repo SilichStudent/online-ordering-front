@@ -2,7 +2,10 @@ import { AUTH_MANAGER_FAIL, AUTH_MANAGER_SUCCESS, AUTH_MANAGER_REQUEST } from '.
 import { GET_CURRENT_MANAGER_REQUEST, GET_CURRENT_MANAGER_SUCCESS, GET_CURRENT_MANAGER_FAIL } from '../constants';
 import * as tokenService from '../../../../../../common/services/token.service';
 
-const initialState = null;
+const initialState = {
+    error: '',
+    loading: false
+};
 
 export default (state = initialState, action) => {
     switch (action.type) {

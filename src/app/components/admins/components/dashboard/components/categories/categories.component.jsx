@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Image, Nav } from 'react-bootstrap';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
+import { Switch, Route } from 'react-router-dom';
 
 import Products from './components/products/products.container';
 import CreateCategory from './components/create-category/create-category.container';
 import RenameCategory from './components/rename-category/rename-category.container';
-import deleteIcon from '../../../../../../../common/static/delete.png'
+// import deleteIcon from '../../../../../../../common/static/delete.png'
 
 import './categories.scss'
 
@@ -18,8 +18,8 @@ export class Categories extends Component {
         return this.props.list.map(category => {
             return (
                 <Nav.Item key={category.uuid}>
-                    <Link to={`/admins/dashboard/categories/${category.uuid}/products`}>{category.name}</Link>
-                    {/* <Nav.Link onClick={() => this.handleCategoryTabClick(category.uuid)}>{category.name}</Nav.Link> */}
+                    {/* <Link to={`/admins/dashboard/categories/${category.uuid}/products`}>{category.name}</Link> */}
+                    <Nav.Link onClick={() => this.handleCategoryTabClick(category.uuid)}>{category.name}</Nav.Link>
                     {/* <Image className="delete-icon" src={deleteIcon} rounded/> */}
                 </Nav.Item>
             )
@@ -59,7 +59,7 @@ export class Categories extends Component {
                         <Nav.Link onClick={() => this.handleCategoryCreate()}>+</Nav.Link>
                     </Nav.Item>
                     <Nav.Item className="category-nav-item">
-                        <Link to="/admins/dashboard/categories/default/products">default</Link>
+                        <Nav.Link onClick={() => this.handleCategoryTabClick("default")}>default</Nav.Link>
                         {/* <Nav.Link href="/admins/dashboard/categories/default/products">default</Nav.Link> */}
                     </Nav.Item>
                     {this.getCategories()}

@@ -7,6 +7,8 @@ import orderLinesReducer from '../../app/components/admins/components/dashboard/
 import currentUserReducer from '../../app/components/users/components/login/reducers';
 import currentManagerReducer from '../../app/components/admins/components/login/reducers';
 import adminProductsReducer from '../../app/components/admins/components/dashboard/components/categories/components/products/reducers';
+import createOrderLineReducer from '../../app/components/admins/components/dashboard/components/order-line/component/create-order-line/reducers';
+import usersOrderLineReducer from '../../app/components/users/components/dashboard/components/order-line/reducers';
 
 const rootReducer = combineReducers({
     users: usersReducer,
@@ -15,7 +17,9 @@ const rootReducer = combineReducers({
     orderLines: orderLinesReducer,
     currentUser: currentUserReducer,
     currentManager: currentManagerReducer,
-    adminProducts: adminProductsReducer
+    adminProducts: adminProductsReducer,
+    createOrderLine: createOrderLineReducer,
+    userOrderLines: usersOrderLineReducer
 });
 
 export default rootReducer;

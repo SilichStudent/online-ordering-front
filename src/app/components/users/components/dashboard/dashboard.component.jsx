@@ -4,6 +4,7 @@ import { Redirect } from 'react-router';
 import { Nav, Navbar } from 'react-bootstrap';
 
 import Profile from './components/profile/profile.container';
+import OrderLine from './components/order-line/order-line.container';
 import * as tokenService from '../../../../../common/services/token.service';
 
 import './dashboard.scss'
@@ -19,8 +20,8 @@ export class Dashboard extends Component {
         this.props.history.push('/users/dashboard/profile')
     }
 
-    onHistorySelect = () =>{
-        this.props.history.push('/users/dashboard/products')
+    onOrderLineSelect = () =>{
+        this.props.history.push('/users/dashboard/order-line')
     }
 
     onCardSelect = () =>{
@@ -45,7 +46,7 @@ export class Dashboard extends Component {
                         <Navbar.Collapse id='basic-nav=bar'>
                             <Nav className='flex-column'>
                                 <Nav.Link  onClick={this.onEditSelect}>{this.props.currentUser.name}</Nav.Link>
-                                <Nav.Link  onClick={this.onHistorySelect}>Products</Nav.Link>
+                                <Nav.Link  onClick={this.onOrderLineSelect}>Order line</Nav.Link>
                                 <Nav.Link  onClick={this.onCardSelect}>Card</Nav.Link>
                                 <Nav.Link  onClick={this.onHistorySelect}>History</Nav.Link>
                             </Nav>
@@ -55,7 +56,7 @@ export class Dashboard extends Component {
                 <div className='content'>
                     <Switch>
                         <Route path='/users/dashboard/profile' component={Profile} />
-                        <Route path='/users/dashboard/products' component={null} />
+                        <Route path='/users/dashboard/order-line' component={OrderLine} />
                         <Route path='/users/dashboard/card' component={null} />
                         <Route path='/users/dashboard/history' component={null} />
                     </Switch>

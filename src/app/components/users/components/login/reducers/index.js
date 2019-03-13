@@ -2,7 +2,10 @@ import { AUTH_USER_REQUEST, AUTH_USER_SUCCESS, AUTH_USER_FAIL } from '../constan
 import { GET_CURRENT_USER_REQUEST, GET_CURRENT_USER_SUCCESS, GET_CURRENT_USER_FAIL } from '../constants';
 import * as tokenService from '../../../../../../common/services/token.service';
 
-const initialState = null;
+const initialState = {
+    error: '',
+    loading: false
+};
 
 export default (state = initialState, action) => {
     switch (action.type) {

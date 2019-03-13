@@ -21,7 +21,8 @@ export class OrderLineCreate extends Component {
   }
 
   componentDidMount(){
-      this.props.loadCategoriesTree()
+      this.props.loadCategories();
+      this.props.loadProducts();
   }
 
   onSubmit = e => {

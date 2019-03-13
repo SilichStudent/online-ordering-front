@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { Switch, Route } from 'react-router-dom';
 
 import { OrderLine as OrderLineSingle } from './component/OrderLine'
-import OrderLineCreate from './component/create-order-line.component/create-order-line.container'
+import OrderLineCreate from './component/create-order-line/create-order-line.container'
 
 import './order-line.scss'
 

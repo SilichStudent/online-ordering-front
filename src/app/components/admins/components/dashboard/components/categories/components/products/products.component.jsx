@@ -21,6 +21,10 @@ export class Products extends Component{
         this.props.loadProducts(this.state.categoryUuid);
     }
 
+    shouldComponentUpdate(){
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAA");
+        return true;
+    }
 
     getProductsList = () => {
         if(!this.props.products){
