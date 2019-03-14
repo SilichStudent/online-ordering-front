@@ -12,4 +12,4 @@
 
 ## configs
 
-config/config.js
+src/config/config.js
