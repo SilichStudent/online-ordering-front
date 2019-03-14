@@ -9,3 +9,7 @@
 
 1. managers - /admins/login
 2. users - / or /users/login
+
+## configs
+
+config/config.js
