@@ -1,4 +1,4 @@
-import { API_ULR as apiUrl } from '../../../config/config'
+import { API_ULR as apiUrl } from '../../config/config'
 
 export const USER_TOKEN = "USER_TOKEN";
 export const MANAGER_TOKEN = "MANAGER_TOKEN";
