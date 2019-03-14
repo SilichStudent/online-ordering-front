@@ -7,5 +7,5 @@
 
 ## endpoints
 
-1 managers - /admins/login
-2 users - / or /users/login
+1. managers - /admins/login
+2. users - / or /users/login
