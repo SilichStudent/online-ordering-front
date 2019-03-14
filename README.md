@@ -13,3 +13,7 @@
 ## configs
 
 src/config/config.js
+
+ ## predifined manager
+ login: manager@softarex.com
+ password: qwer123!
