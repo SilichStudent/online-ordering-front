@@ -1,7 +1,7 @@
 import { callApi } from '../../../../../../../../../../common/services/api/api'
 import { RequestBuilder } from '../../../../../../../../../../common/services/api/RequestBuilder'
-import { RENAME_CATEGORY_REQUEST, RENAME_CATEGORY_SUCCESS, RENAME_CATEGORY_FAIL } from '../constants'
 import { Methods } from "../../../../../../../../../../common/services/api/Request"
+import { RENAME_CATEGORY_REQUEST, RENAME_CATEGORY_SUCCESS, RENAME_CATEGORY_FAIL } from '../constants'
 
 export function renameCategory(id, category) {
     return (dispatch) => {

@@ -24,6 +24,7 @@ export class CategoryCreate extends Component {
 
         this.props.createCategory(category);
 
+        this.props.history.push("/admins/dashboard/categories")
     }
 
     handleNameChange = (e) => {

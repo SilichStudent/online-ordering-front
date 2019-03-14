@@ -8,6 +8,7 @@ import AdminsRoutes from './components/admins/admins.container'
 import UsersRoutes from './components/users/users.container'
 import { Header } from './components/header/Header'
 
+import '../common/styles/index.scss'
 
 export class Routes extends Component {
 

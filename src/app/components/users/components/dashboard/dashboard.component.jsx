@@ -5,50 +5,55 @@ import { Nav, Navbar } from 'react-bootstrap';
 
 import Profile from './components/profile/profile.container';
 import OrderLine from './components/order-line/order-line.container';
+import UserCart from './components/cart/cart.container';
 import * as tokenService from '../../../../../common/services/token.service';
 
 import './dashboard.scss'
 
 export class Dashboard extends Component {
-
-    
-    isHavePermissions(){
+    isHavePermissions() {
         return tokenService.getUserToken() && this.props.currentUser && this.props.currentUser.uuid;
     }
 
-    onEditSelect = () =>{
+    onEditSelect = () => {
         this.props.history.push('/users/dashboard/profile')
     }
 
-    onOrderLineSelect = () =>{
+    onOrderLineSelect = () => {
         this.props.history.push('/users/dashboard/order-line')
     }
 
-    onCardSelect = () =>{
-        this.props.history.push('/users/dashboard/card')
+    onCardSelect = () => {
+        this.props.history.push('/users/dashboard/cart')
     }
 
-    onHistorySelect = () =>{
+    onHistorySelect = () => {
         this.props.history.push('/users/dashboard/history')
     }
-    
+
+    getQuantity = () => {
+        if (this.props.cartProductsQuantity < 1) {
+            return null;
+        }
+
+        return this.props.cartProductsQuantity;
+    }
 
     render() {
-        if(!this.isHavePermissions()){
-            return <Redirect to='/users/login'/>
+        if (!this.isHavePermissions()) {
+            return <Redirect to='/users/login' />
         }
-        
+
         return (
-            <div className='dashboard'>
+            <div id='users-dashboard'>
                 <div className='menu-list'>
                     <Navbar expand='sm'>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id='basic-nav=bar'>
                             <Nav className='flex-column'>
-                                <Nav.Link  onClick={this.onEditSelect}>{this.props.currentUser.name}</Nav.Link>
-                                <Nav.Link  onClick={this.onOrderLineSelect}>Order line</Nav.Link>
-                                <Nav.Link  onClick={this.onCardSelect}>Card</Nav.Link>
-                                <Nav.Link  onClick={this.onHistorySelect}>History</Nav.Link>
+                                <Nav.Link onClick={this.onEditSelect}>{this.props.currentUser.name}</Nav.Link>
+                                <Nav.Link onClick={this.onOrderLineSelect}>Order line</Nav.Link>
+                                <Nav.Link onClick={this.onCardSelect}>Cart <div className="cart-products-quantity">{this.getQuantity()}</div></Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
@@ -57,8 +62,7 @@ export class Dashboard extends Component {
                     <Switch>
                         <Route path='/users/dashboard/profile' component={Profile} />
                         <Route path='/users/dashboard/order-line' component={OrderLine} />
-                        <Route path='/users/dashboard/card' component={null} />
-                        <Route path='/users/dashboard/history' component={null} />
+                        <Route path='/users/dashboard/cart' component={UserCart} />
                     </Switch>
                 </div>
             </div>

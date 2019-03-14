@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { OrderLine } from './order-line.component'
-import { loadOrderLines } from './actions'
+import { loadOrderLines, deleteOrderLine } from './actions'
 
 function mapStateToProps(state) {
     const { orderLines: { limit, offset, list, count, error, loading } } = state;
@@ -8,4 +8,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { loadOrderLines })(OrderLine)
+export default connect(mapStateToProps, { loadOrderLines, deleteOrderLine })(OrderLine)

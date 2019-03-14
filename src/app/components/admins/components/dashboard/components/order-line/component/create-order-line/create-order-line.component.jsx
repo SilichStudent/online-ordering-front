@@ -107,7 +107,7 @@ export class OrderLineCreate extends Component {
               <Form.Label>Description</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter name"
+                placeholder="Enter description"
                 onChange={this.handleDescriptionChange}
               />
             </Form.Group>

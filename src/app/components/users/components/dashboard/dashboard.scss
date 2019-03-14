@@ -1,0 +1,31 @@
+#users-dashboard{
+    height: 100%;
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    display: flex;
+    @media (max-width: 576px){
+        flex-direction: column;
+    }
+    .cart-products-quantity{
+        margin-left: 5px;
+        font-family: serif;
+        display: inline-flex;
+        color: #5ebba6;
+    }
+    .menu-list{
+        height: 100%;
+        width: 20%;
+        @media (max-width: 576px){
+            width: 100%;
+        }
+    }
+    
+    .content{
+        height: 100%;
+        width: 80%;
+        @media (max-width: 576px){
+            width: 100%;
+        }
+    }
+}

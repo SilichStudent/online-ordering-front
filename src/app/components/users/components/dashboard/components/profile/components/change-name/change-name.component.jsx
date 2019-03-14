@@ -3,7 +3,33 @@ import { Modal, Form, Button } from 'react-bootstrap';
 
 export class ChangeName extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: ""
+        }
+    }
+
     handleHide = () => {
+        this.props.history.push("/users/dashboard/profile")
+    }
+
+    handleNameChange = (e) => {
+        console.log(e.target.value);
+
+        this.setState({
+            name: e.target.value
+        })
+    }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+
+        const request = {
+            name: this.state.name || this.props.name
+        }
+
+        this.props.changeName(request);
         this.props.history.push("/users/dashboard/profile")
     }
 
@@ -23,7 +49,7 @@ export class ChangeName extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form>
+                        <Form onSubmit={this.onSubmit}>
                             <Form.Group controlId="formGroupText">
                                 <Form.Control type="text" placeholder="Enter name" defaultValue={this.props.name} />
                             </Form.Group>

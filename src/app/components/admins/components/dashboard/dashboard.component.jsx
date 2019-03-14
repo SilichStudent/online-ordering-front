@@ -42,7 +42,7 @@ export class Dashboard extends Component {
 
         return (
             // here change to component 
-            <div className='dashboard'>
+            <div className='admins-dashboard'>
                 <div className='menu-list'>
                     <Navbar expand='sm'>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />

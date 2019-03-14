@@ -1,7 +1,7 @@
 import { GET_CATEGORIES_TREE_REQUEST, GET_CATEGORIES_TREE_SUCCESS, GET_CATEGORIES_TREE_FAIL } from '../constants'
-import { SELECT_CATEGORY } from '../constants'
 import { CREATE_CATEGORY_REQUEST, CREATE_CATEGORY_SUCCESS, CREATE_CATEGORY_FAIL } from '../components/create-category/constants'
 import { DELETE_CATEGORY_REQUEST, DELETE_CATEGORY_SUCCESS, DELETE_CATEGORY_FAIL } from '../constants';
+import { RENAME_CATEGORY_REQUEST, RENAME_CATEGORY_SUCCESS, RENAME_CATEGORY_FAIL } from '../components/rename-category/constants'
 
 const initialState = {
     list: [],
@@ -15,6 +15,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case RENAME_CATEGORY_REQUEST:
         case CREATE_CATEGORY_REQUEST:
         case DELETE_CATEGORY_REQUEST:
         case GET_CATEGORIES_TREE_REQUEST:
@@ -42,12 +43,25 @@ export default (state = initialState, action) => {
                 loading: false
             };
         case DELETE_CATEGORY_SUCCESS:
-            const listDelete = state.list.filter( category => category.uuid !== action.response.uuid);
+            const listDelete = state.list.filter( category => category.uuid !== action.uuid);
             return {
                 ...state,
                 list: listDelete,
                 loading: false
             };
+        case RENAME_CATEGORY_SUCCESS:
+            const listUpdate = state.list.map( category => {
+                if(category.uuid !== action.response.uuid){
+                    return category;
+                }
+                return action.response;
+            });
+            return {
+                ...state,
+                list: listUpdate,
+                loading: false
+            };
+        case RENAME_CATEGORY_FAIL:
         case GET_CATEGORIES_TREE_FAIL:
         case DELETE_CATEGORY_FAIL:
         case CREATE_CATEGORY_FAIL:
@@ -56,11 +70,6 @@ export default (state = initialState, action) => {
                 error: action.error,
                 loading: false
             };
-        case SELECT_CATEGORY:
-            return {
-                ...state,
-                categoryKey: action.categoryKey
-            }
         default:
             return state;
     }

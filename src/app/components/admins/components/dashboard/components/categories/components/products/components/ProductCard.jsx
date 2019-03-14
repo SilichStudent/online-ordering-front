@@ -7,6 +7,10 @@ export class ProductCard extends Component {
         this.props.handleDeleteProduct(this.props.uuid);
     }
 
+    handleEdit = () => {
+        this.props.handleUpdateProduct(this.props.categoryUuid, this.props.uuid);
+    }
+
     render() {
         return (
             <div className='card-wrapper'>
@@ -16,7 +20,7 @@ export class ProductCard extends Component {
                     <Card.Body>
                         <Card.Title>{this.props.name}</Card.Title>
                         <Card.Text>{this.props.description}</Card.Text>
-                        <Button variant="primary" className="card-button">Edit</Button>
+                        <Button variant="primary" className="card-button" onClick={this.handleEdit}>Edit</Button>
                         <Button variant="danger" className="card-button" onClick={this.handelDelete}>Delete</Button>
                     </Card.Body>
                 </Card>

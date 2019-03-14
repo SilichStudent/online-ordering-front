@@ -1,15 +1,24 @@
-.categories-content{
+#admins-categories-content{
     height: 100%;
     width: 100%;
-}
+    
+    .category-nav-item{
+        display: flex;
+    }
 
-.category-nav-item{
-    display: flex;
-}
+    .delete-category-icon{
+        height: 15px;
+        width: 15px;
+        display: block;
+        margin: auto;
+    }
 
-.delete-category-icon{
-    height: 15px;
-    width: 15px;
-    display: block;
-    margin: auto;
+    .toolbar{
+        padding: 10px;
+        border: #5ebba675;
+        border-style: groove;
+        border-radius: 7px;
+        margin-bottom: 5px;
+        border-width: 1px;
+    }
 }

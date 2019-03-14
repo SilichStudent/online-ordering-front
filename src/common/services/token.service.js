@@ -9,9 +9,11 @@ export const getManagerToken = () => {
 }
 
 export const setUserToken = (token) => {
+    localStorage.removeItem(MANAGER_TOKEN);
     return localStorage.setItem(USER_TOKEN, token);
 }
 
 export const setManagerToken = (token) => {
+    localStorage.removeItem(USER_TOKEN);
     return localStorage.setItem(MANAGER_TOKEN, token);
 }

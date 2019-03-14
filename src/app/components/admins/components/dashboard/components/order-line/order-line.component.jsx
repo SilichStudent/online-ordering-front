@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import { OrderLine as OrderLineSingle } from './component/OrderLine'
 import OrderLineCreate from './component/create-order-line/create-order-line.container'
+import OrderLineEdit from './component/edit-order-line/edit-order-line.container'
 
 import './order-line.scss'
 
@@ -27,6 +28,8 @@ export class OrderLine extends Component {
                 published={orderLine.published}
                 products={orderLine.products}
                 categories={orderLine.categories}
+                handleEditButtonClick={this.handleEditButtonClick}
+                handleDeleteButtonClick={this.handleDeleteButtonClick}
             />)
         })
     }
@@ -36,9 +39,17 @@ export class OrderLine extends Component {
         this.props.history.push("/admins/dashboard/order-line/create")
     }
 
+    handleEditButtonClick = (uuid) => {
+        this.props.history.push(`/admins/dashboard/order-line/${uuid}/update`)
+    }
+
+    handleDeleteButtonClick = (uuid) => {
+        this.props.deleteOrderLine(uuid);
+    }
+
     render() {
         return (
-            <div className="order-line-container">
+            <div id="admin-order-line-container">
                 <div className="order-line-menu">
                     <Button variant="success" onClick={this.onCreateSubmit}>+ Create</Button>
                 </div>
@@ -47,6 +58,7 @@ export class OrderLine extends Component {
                 </div>
                 <Switch>
                     <Route path="/admins/dashboard/order-line/create" component={OrderLineCreate}/>
+                    <Route path="/admins/dashboard/order-line/:id/update" component={OrderLineEdit}/>
                 </Switch>
             </div>
         )

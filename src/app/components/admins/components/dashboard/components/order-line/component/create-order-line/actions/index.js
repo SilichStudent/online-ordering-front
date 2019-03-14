@@ -2,7 +2,7 @@ import { callApi } from '../../../../../../../../../../common/services/api/api';
 import { RequestBuilder } from '../../../../../../../../../../common/services/api/RequestBuilder';
 import { CREATE_ORDER_LINE_REQUEST, CREATE_ORDER_LINE_SUCCESS, CREATE_ORDER_LINE_FAIL } from '../constants';
 import { GET_CATEGORIES_REQUEST, GET_CATEGORIES_SUCCESS, GET_CATEGORIES_FAIL } from '../constants';
-import { GET_PRODUCTS_REQUEST, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_FAIL } from '../constants';
+import { CREATE_ORDER_LINE_GET_PRODUCTS_REQUEST, CREATE_ORDER_LINE_GET_PRODUCTS_SUCCESS, CREATE_ORDER_LINE_GET_PRODUCTS_FAIL } from '../constants';
 import { Methods } from "../../../../../../../../../../common/services/api/Request";
 
 export function createOrderLine(manager) {
@@ -56,12 +56,12 @@ export const loadProducts = () => {
             .build();
 
         
-        dispatch({ type: GET_PRODUCTS_REQUEST });
+        dispatch({ type: CREATE_ORDER_LINE_GET_PRODUCTS_REQUEST });
 
         callApi(request).then( response => {
-            dispatch({ type: GET_PRODUCTS_SUCCESS, response })
+            dispatch({ type: CREATE_ORDER_LINE_GET_PRODUCTS_SUCCESS, response })
         }).catch( err => {
-            dispatch({ type: GET_PRODUCTS_FAIL, error: err })
+            dispatch({ type: CREATE_ORDER_LINE_GET_PRODUCTS_FAIL, error: err })
         })
     }
 };

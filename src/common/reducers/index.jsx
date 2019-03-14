@@ -9,6 +9,11 @@ import currentManagerReducer from '../../app/components/admins/components/login/
 import adminProductsReducer from '../../app/components/admins/components/dashboard/components/categories/components/products/reducers';
 import createOrderLineReducer from '../../app/components/admins/components/dashboard/components/order-line/component/create-order-line/reducers';
 import usersOrderLineReducer from '../../app/components/users/components/dashboard/components/order-line/reducers';
+import usersOrderLineProductsReducer from '../../app/components/users/components/dashboard/components/order-line/components/products/reducers';
+import userCartReducer from '../../app/components/users/components/dashboard/components/cart/reducers';
+import editProductReducer from '../../app/components/admins/components/dashboard/components/categories/components/products/components/edit-product/reducers';
+import editOrderLineReducer from '../../app/components/admins/components/dashboard/components/order-line/component/edit-order-line/reducers';
+import userChangePassReducer from '../../app/components/users/components/dashboard/components/profile/components/change-password/reducers';
 
 const rootReducer = combineReducers({
     users: usersReducer,
@@ -19,7 +24,12 @@ const rootReducer = combineReducers({
     currentManager: currentManagerReducer,
     adminProducts: adminProductsReducer,
     createOrderLine: createOrderLineReducer,
-    userOrderLines: usersOrderLineReducer
+    userOrderLine: usersOrderLineReducer,
+    usersOrderLineProducts: usersOrderLineProductsReducer,
+    userCart: userCartReducer,
+    editProduct: editProductReducer,
+    editOrderLine: editOrderLineReducer,
+    userChangePass: userChangePassReducer
 });
 
 export default rootReducer;

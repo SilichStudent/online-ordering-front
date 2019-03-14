@@ -7,10 +7,20 @@ export class CategoryRename extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            categoryUuid: props.match.params.id,
             name: ''
         }
     }
+    
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.match.params.id !== this.props.match.params.id;
+    }
 
+    componentWillUpdate(nextProps, nextState) {
+        this.setState({
+            categoryUuid: nextProps.match.params.id
+        })
+    }
 
     onSubmit = (e) => {
         e.preventDefault();
@@ -22,8 +32,8 @@ export class CategoryRename extends Component {
             return;
         }
 
-        this.props.renameCategory(this.props.categoryKey, product);
-        this.props.history.push('/admins/dashboard/products');
+        this.props.renameCategory(this.state.categoryUuid, product);
+        this.props.history.push(`/admins/dashboard/categories/${this.state.categoryUuid}/products`);
     }
 
     handleNameChange = (e) => {
@@ -31,7 +41,7 @@ export class CategoryRename extends Component {
     }
 
     handleClose = (e) => {
-        this.props.history.push('/admins/dashboard/products');
+        this.props.history.push(`/admins/dashboard/categories/${this.state.categoryUuid}/products`);
     }
 
     render() {

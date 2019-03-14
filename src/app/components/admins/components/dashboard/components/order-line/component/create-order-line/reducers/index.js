@@ -1,5 +1,5 @@
 import { GET_CATEGORIES_REQUEST, GET_CATEGORIES_SUCCESS, GET_CATEGORIES_FAIL } from '../constants'
-import { GET_PRODUCTS_REQUEST, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_FAIL } from '../constants'
+import { CREATE_ORDER_LINE_GET_PRODUCTS_REQUEST, CREATE_ORDER_LINE_GET_PRODUCTS_SUCCESS, CREATE_ORDER_LINE_GET_PRODUCTS_FAIL } from '../constants'
 
 const initialState = {
     products: [],
@@ -11,7 +11,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case GET_CATEGORIES_REQUEST:
-        case GET_PRODUCTS_REQUEST:
+        case CREATE_ORDER_LINE_GET_PRODUCTS_REQUEST:
             return {
                 ...state,
                 error: '',
@@ -23,14 +23,14 @@ export default (state = initialState, action) => {
                 categories: action.response.list,
                 loading: false
             }
-        case GET_PRODUCTS_SUCCESS:
+        case CREATE_ORDER_LINE_GET_PRODUCTS_SUCCESS:
             return {
                 ...state,
                 products: action.response.list,
                 loading: false
             }
         case GET_CATEGORIES_FAIL:
-        case GET_PRODUCTS_FAIL:
+        case CREATE_ORDER_LINE_GET_PRODUCTS_FAIL:
             return {
                 ...state,
                 error: action.error,

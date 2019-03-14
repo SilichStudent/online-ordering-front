@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav } from 'react-bootstrap';
+import { Nav, Button } from 'react-bootstrap';
 import { Switch, Route } from 'react-router-dom';
 
 import Products from './components/products/products.container';
@@ -10,6 +10,13 @@ import RenameCategory from './components/rename-category/rename-category.contain
 import './categories.scss'
 
 export class Categories extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedCategory: null
+        }
+    }
+
     componentDidMount() {
         this.props.loadCategories();
     }
@@ -18,9 +25,7 @@ export class Categories extends Component {
         return this.props.list.map(category => {
             return (
                 <Nav.Item key={category.uuid}>
-                    {/* <Link to={`/admins/dashboard/categories/${category.uuid}/products`}>{category.name}</Link> */}
                     <Nav.Link onClick={() => this.handleCategoryTabClick(category.uuid)}>{category.name}</Nav.Link>
-                    {/* <Image className="delete-icon" src={deleteIcon} rounded/> */}
                 </Nav.Item>
             )
         })
@@ -31,19 +36,22 @@ export class Categories extends Component {
     }
 
     handleRenameCategory = () => {
-        this.props.history.push("/admins/dashboard/categories/rename");
+        this.props.history.push(`/admins/dashboard/categories/${this.state.selectedCategory}/rename`);
     }
 
     handleDeleteCategory = () => {
-        this.props.deleteCategory(this.props.categoryKey);
+        this.props.deleteCategory(this.state.selectedCategory);
     }
 
     handleCategoryTabClick = (id) => {
+        this.setState({
+            selectedCategory: id
+        });
         this.props.history.push(`/admins/dashboard/categories/${id}/products`);
     }
 
-    isNotCategory = () => {
-        return this.props.categoryKey === 'default'
+    isMenuDisabled = () => {
+        return !this.state.selectedCategory || this.state.selectedCategory === 'default'
     }
 
     render() {
@@ -53,20 +61,23 @@ export class Categories extends Component {
         }
 
         return (
-            <div className="categories-content">
+            <div id="admins-categories-content">
+                <div className="toolbar">
+                    <Button variant="outline-info" onClick={this.handleRenameCategory} disabled={this.isMenuDisabled()}>Rename</Button>
+                    <Button variant="outline-danger" onClick={this.handleDeleteCategory} disabled={this.isMenuDisabled()}>Delete</Button>
+                </div>
                 <Nav variant="tabs">
                     <Nav.Item className="category-nav-item">
                         <Nav.Link onClick={() => this.handleCategoryCreate()}>+</Nav.Link>
                     </Nav.Item>
                     <Nav.Item className="category-nav-item">
                         <Nav.Link onClick={() => this.handleCategoryTabClick("default")}>default</Nav.Link>
-                        {/* <Nav.Link href="/admins/dashboard/categories/default/products">default</Nav.Link> */}
                     </Nav.Item>
                     {this.getCategories()}
                 </Nav>
                 <Switch>
                     <Route path="/admins/dashboard/categories/create" component={CreateCategory} />
-                    <Route path="/admins/dashboard/categories/rename" component={RenameCategory} />
+                    <Route path="/admins/dashboard/categories/:id/rename" component={RenameCategory} />
                     <Route path="/admins/dashboard/categories/:id/products" component={Products} />
                 </Switch>
             </div>

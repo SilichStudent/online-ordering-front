@@ -1,0 +1,27 @@
+#user-order-line-products-container{
+    height: 100%;
+    width: 100%;
+    .content-grid{
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        
+        .card{    
+            margin: 5px;
+            height: 100%;
+        }
+        .card-wrapper{
+            height: 300px;
+            width: 100%;
+        }
+        .card-button{
+            width: 48%;
+            height: 40px;
+        }
+    }
+    .quantity{
+        width: 46%;
+        margin: 2%
+    }
+}

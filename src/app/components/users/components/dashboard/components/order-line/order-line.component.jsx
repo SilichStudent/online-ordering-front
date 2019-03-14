@@ -11,13 +11,25 @@ export class OrderLines extends Component{
     }
 
     getCategories = () => {
-        return this.props.list.map(category => {
+        return this.props.categories.map(category => {
             return (
                 <Nav.Item key={category.uuid}>
                     <Nav.Link onClick={() => this.handleCategoryTabClick(category.uuid)}>{category.name}</Nav.Link>
                 </Nav.Item>
             )
         })
+    }
+
+    getProductsTab = () => {
+        if(!this.props.products || this.props.products.length === 0){
+            return null;
+        }
+
+        return (
+            <Nav.Item className="category-nav-item">
+                <Nav.Link onClick={() => this.handleCategoryTabClick("default")}>default</Nav.Link>
+            </Nav.Item>
+        )
     }
     
     handleCategoryTabClick = (id) => {
@@ -28,9 +40,7 @@ export class OrderLines extends Component{
         return (
             <div className="published-order-line-container">
                 <Nav variant="tabs">
-                    <Nav.Item className="category-nav-item">
-                        <Nav.Link onClick={() => this.handleCategoryTabClick("default")}>default</Nav.Link>
-                    </Nav.Item>
+                    {this.getProductsTab()}
                     {this.getCategories()}
                 </Nav>
                 <Switch>

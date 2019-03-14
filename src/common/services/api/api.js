@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { Request, Methods } from "./Request";
 import * as tokenService from '../token.service';
-import { AUTH_TOKEN } from '../../constants';
+import { AUTH_TOKEN, API_ULR } from '../../constants';
 
 /**
  * 
@@ -10,7 +10,7 @@ import { AUTH_TOKEN } from '../../constants';
  */
 export function callApi(request) {
     let responsePromise;
-    const url = "http://localhost:3001/api/v1" + request.endpoint;
+    const url = API_ULR + request.endpoint;
 
     if(!request.headers){
         request.headers = {}
